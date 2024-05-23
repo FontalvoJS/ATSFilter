@@ -12,9 +12,9 @@ Para instalar ATS Filter, sigue estos pasos:
 
 - Descomprime el archivo descargado (si está comprimido) en una carpeta en tu computadora.
 
-### Cargar la extensión en Chrome
+### Cargar la extensión en tu navegador
 
-1. Abre Chrome y ve a `chrome://extensions/`.
+1. Abre y ve a `chrome|edge|brave://extensions/`.
 2. Activa el "Modo de desarrollador" en la esquina superior derecha.
 3. Haz clic en "Cargar descomprimida" y selecciona la carpeta donde guardaste el código fuente de ATS Filter.
 
