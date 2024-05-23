@@ -65,13 +65,9 @@ async function loadPreviewSaved() {
   getStatusSwitch();
 }
 function getKeywords() {
-  // get the keywords from the storage
   chrome.storage.sync.get(["keywords"], function (items) {
-    // check if there are keywords in the storage
     if (items?.keywords?.length > 0) {
-      // clear the textarea
       textarea.value = "";
-      // add each keyword to the textarea
       items.keywords.forEach((keyword) => {
         if (keyword.length > 0) {
           textarea.value += `${keyword},`;
@@ -81,9 +77,7 @@ function getKeywords() {
   });
 }
 function getStatusSwitch() {
-  // get the status of the switch from the storage
   chrome.storage.sync.get(["statusSwitch"], function (items) {
-    // set the status of the switch
     switche.checked = items.statusSwitch;
   });
 }

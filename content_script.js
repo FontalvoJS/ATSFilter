@@ -3,6 +3,7 @@ let statusSwitch = null;
 let isThrottled = false;
 let lastExecutionTime = 0;
 const throttleInterval = 500;
+const url = window.location.href;
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "receiveKeywords") {
     keywords = message.keywords;
@@ -65,7 +66,7 @@ async function triesLogic(elements, tries) {
 async function hideViewedAndRequested(reset) {
   let tries = 0;
   let allElements = [];
-  if (!linkedinValidator()) return;
+  if (!url.includes("linkedin")) return;
   let elements = document.getElementsByClassName(
     "job-card-container__footer-job-state"
   );
@@ -92,20 +93,14 @@ async function hideViewedAndRequested(reset) {
   }
 }
 // SUB FUNCTIONS
-function linkedinValidator() {
-  const isLinkedin = window.location.href.includes("linkedin");
-  if (!isLinkedin) return false;
-  return true;
-}
-function computrabajoValidator() {
-  const isComputrabajo = window.location.href.includes("computrabajo");
-  if (!isComputrabajo) return false;
-  return true;
-}
-function elempleoValidator() {
-  const isElempleo = window.location.href.includes("elempleo");
-  if (!isElempleo) return false;
-  return true;
+function brandValidator() {
+  return (url) => {
+    return (
+      url.includes("elempleo") ||
+      url.includes("computrabajo") ||
+      url.includes("linkedin")
+    );
+  };
 }
 function messageSender(msgId, msg) {
   try {
@@ -123,8 +118,17 @@ function messageSender(msgId, msg) {
   }
 }
 function senderManager() {
-  messageSender("getKeywords", false);
-  if (linkedinValidator()) messageSender("getStatusSwitch", false);
+  if (isValidContext()) {
+    try {
+      messageSender("getKeywords", false);
+      if (brandValidator()(url)) messageSender("getStatusSwitch", false);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+function isValidContext() {
+  return !document.hidden && chrome.runtime && chrome.runtime.id;
 }
 async function manageExecution() {
   if (!isThrottled) {
@@ -152,6 +156,7 @@ async function initProcess() {
   try {
     senderManager();
     await hideViewedAndRequested(statusSwitch);
+    await manageExecution();
     document.addEventListener("mouseover", async () => {
       await manageExecution();
     });
@@ -164,8 +169,6 @@ async function initProcess() {
   }
 }
 async function main() {
-  if (!linkedinValidator() || !computrabajoValidator() || !elempleoValidator()) return;
-  console.log("Iniciando proceso");
-  await initProcess();
+  if (brandValidator()(url)) await initProcess();
 }
 main();
