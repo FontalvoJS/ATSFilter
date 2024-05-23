@@ -2,7 +2,7 @@ let keywords = [];
 let statusSwitch = null;
 let isThrottled = false;
 let lastExecutionTime = 0;
-const throttleInterval = 500;
+const throttleInterval = 1000;
 const url = window.location.href;
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "receiveKeywords") {
@@ -11,6 +11,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     statusSwitch = message.statusSwitch;
     hideViewedAndRequested(statusSwitch);
   } else if (message.action === "updateApp") {
+    console.log("Url recibida: ", message.urlApp);
     window.location.href = message.urlApp;
   }
 });
@@ -155,9 +156,16 @@ async function manageExecution() {
 async function initProcess() {
   try {
     senderManager();
-    await hideViewedAndRequested(statusSwitch);
     await manageExecution();
-    document.addEventListener("mouseover", async () => {
+    await hideViewedAndRequested(statusSwitch);
+    document.addEventListener("mousemove", async () => {
+      await manageExecution();
+    });
+    document.addEventListener("scroll", async () => {
+      await manageExecution();
+    });
+    document.addEventListener("click", async () => {
+      await new Promise((resolve) => setTimeout(resolve, 1600));
       await manageExecution();
     });
   } catch (err) {
