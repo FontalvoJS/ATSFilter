@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ATS Filter</title>
+  <link rel="stylesheet" href="assets/css/popup.css">
+</head>
+
+<body>
+  <h3 id="title">ATS Filter</h3>
+  <a href="#" type="button" hidden id="updateApp">Update now!</a>
+  <span id="paragraph">Ignore all offers from LinkedIn, Elempleo and Computrabajo based on your keywords and
+    viewed/requested status</span>
+  <br>
+  <textarea id="keywords" placeholder="Example: Baires, Konecta, Epam"></textarea>
+
+  <div id="ignorados">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/2048px-LinkedIn_icon.svg.png"
+      style="width: 9px;">
+    Viewed/Requested:
+    <label>
+      <input type="checkbox" id="checkbox1">
+      <span class="custom-checkbox"></span>
+    </label>
+  </div>
+  <small id="me">By: FontalvoJS</small>
+</body>
+<script src="popup.js"></script>
+
+</html>

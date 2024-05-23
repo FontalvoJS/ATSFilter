@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "ATS Filter",
+  "version": "1.0",
+  "description": "Ignore offers from LinkedIn, Elempleo and Computrabajo based on enterprise names and status. By: FontalvoJS",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_script.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "activeTab", "tabs"],
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "32": "assets/icons/icon32.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  }
+}
