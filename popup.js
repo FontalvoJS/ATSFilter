@@ -37,7 +37,8 @@ async function manageDataFromApi(data) {
   if (data.updateAlert) {
     updateApp.removeAttribute("hidden");
     updateApp.addEventListener("click", () => {
-      messageSender("updateApp", true);
+      console.log('mensaje enviado desde el popyp');
+      messageSender("updateApp", false);
     });
   } else {
     updateApp.setAttribute("hidden", true);
@@ -88,3 +89,4 @@ async function initProcess() {
   manageSwitch();
 }
 initProcess();
+
