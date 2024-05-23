@@ -37,10 +37,4 @@ Para instalar ATS Filter, sigue estos pasos:
 
 - Si deseas actualizar las palabras clave o el estado de las ofertas, simplemente abre el popup de la extensión y realiza los cambios necesarios.
 
-## 4. Ayudame a mejorar
-
-Si tienes algún problema o sugerencia, no dudes en contactarme en mejia_andres@hotmail.es. ¡Espero que esta herramienta te sea de gran ayuda!
-
-Gracias.
-
 ---
