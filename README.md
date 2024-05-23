@@ -39,8 +39,7 @@ Para instalar ATS Filter, sigue estos pasos:
 
 ## 4. Ayudame a mejorar
 
-Si tienes algún problema o sugerencia, no dudes en contactarme en mejia_andres@hotmail.es. ¡Espero que esta herramienta te sea de gran ayuda!
-
+Si tienes algún problema o sugerencia, no dudes en contactarme en mejia_andres@hotmail.es.
 Gracias.
 
 ---
