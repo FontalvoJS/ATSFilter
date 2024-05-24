@@ -1,7 +1,7 @@
 function sendMessageToActiveTab(action, data, updateApp = false) {
   chrome.tabs.query({ active: true }, (tabs) => {
     if (tabs.length > 0) {
-      if (!updateApp) {
+      if (!updateApp && tabs[0].active) {
         if (
           tabs[0].url.includes("linkedin") ||
           tabs[0].url.includes("elempleo") ||
@@ -39,7 +39,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     });
     sendResponse({ status: "success" });
   } else if (message.action === "updateApp") {
-    console.log("Mensaje recibido en el background");
     sendMessageToActiveTab(
       "updateApp",
       {
