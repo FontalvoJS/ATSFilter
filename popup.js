@@ -37,7 +37,7 @@ async function manageDataFromApi(data) {
   if (data.updateAlert) {
     updateApp.removeAttribute("hidden");
     updateApp.addEventListener("click", () => {
-      console.log('mensaje enviado desde el popyp');
+      console.log("mensaje enviado desde el popyp");
       messageSender("updateApp", false);
     });
   } else {
@@ -45,7 +45,6 @@ async function manageDataFromApi(data) {
   }
 }
 function validateKeywords(keys) {
-  if (keys?.length === 0) return false;
   keywords = keys.split(",").filter((key) => key.toLowerCase().trim() !== "");
   messageSender("keywordsValidated", keywords);
   messageSender("getKeywords", false);
@@ -89,4 +88,3 @@ async function initProcess() {
   manageSwitch();
 }
 initProcess();
-
