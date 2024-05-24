@@ -37,7 +37,6 @@ async function manageDataFromApi(data) {
   if (data.updateAlert) {
     updateApp.removeAttribute("hidden");
     updateApp.addEventListener("click", () => {
-      console.log("mensaje enviado desde el popyp");
       messageSender("updateApp", false);
     });
   } else {

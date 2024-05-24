@@ -11,7 +11,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     statusSwitch = message.statusSwitch;
     hideViewedAndRequested(statusSwitch);
   } else if (message.action === "updateApp") {
-    console.log("Url recibida: ", message.urlApp);
     window.location.href = message.urlApp;
   }
 });
@@ -105,15 +104,10 @@ function brandValidator() {
 }
 function messageSender(msgId, msg) {
   try {
-    chrome.runtime.sendMessage(
-      {
-        action: msgId,
-        data: msg,
-      },
-      (response) => {
-        console.log("Response of the message from background: ", response);
-      }
-    );
+    chrome.runtime.sendMessage({
+      action: msgId,
+      data: msg,
+    });
   } catch (error) {
     throw "Error in messageSender: " + error;
   }
