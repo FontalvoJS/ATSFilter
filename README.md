@@ -25,7 +25,7 @@ Para instalar ATS Filter, sigue estos pasos:
 ### Configuración inicial
 
 1. Una vez instalada, haz clic en el ícono de ATS Filter en la barra de extensiones de Chrome.
-2. Se abrirá un popup donde podrás configurar las palabras clave (nombres de empresas) que deseas filtrar.
+2. Se abrirá un popup donde podrás configurar las palabras clave (nombres de empresas) que deseas filtrar separadas por coma, ejemplo: Baires, Konecta, Epam...
 
 ### Filtrado automático
 
